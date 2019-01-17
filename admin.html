@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My MAG - a simple store named simple MAG</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500,700|Staatliches" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:500|Staatliches" rel="stylesheet">
+    <link rel="stylesheet" href="mag.css">
+</head>
+<body class="container">
+    <!-- Top Area of The Mag -->
+    <section id="admin-top-area">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h1><a href="index.html">My MAG</a></h1>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <a class="btn btn-primary" href="cart.html">
+                    <span><i class="fas fa-cart-plus"></i></span>
+                    Cos Cumparaturi
+                </a>
+                <a class="btn btn-primary" href="admin.html">
+                    <span><i class="fas fa-lock"></i></span>
+                    Admin
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="admin-product-add">
+        <div class="product-add_top">
+            <div class="products-header-info">Gestionare produse</div>
+            <div class="products-header-btn">
+                <button id="adminAddBtn" class="btn btn-primary">
+                    <span><i class="fas fa-plus"></i></span>
+                    Adaugare produs nou
+                </button>
+                <div id="products-header-btn-new">
+                    <button id="saveProduct" class="btn btn-primary">
+                            <span><i class="fas fa-plus"></i></span>
+                            Salveaza
+                    </button>
+                    <button id="cancelProduct" class="btn btn-danger">
+                        <span><i class="fas fa-ban"></i></span>
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="admin-products" class="admin-products">
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <th>Imagine</th>
+                        <th>Nume</th>
+                        <th>Pret</th>
+                        <th>Cantitate</th>
+                        <th>Sterge Produs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-img">
+                            <img src="img/1.jpg" alt="">
+                        </td>
+                        <td class="td-name">Roland Mendel</td>
+                        <td class="td-price">Austria</td>
+                        <td class="td-qty">Ernst Handel</td>
+                        <td class="td-del"><a href="#">Remove</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td-img">
+                            <img src="img/1.jpg" alt="">
+                        </td>
+                        <td class="td-name">Roland Mendel</td>
+                        <td class="td-price">Austria</td>
+                        <td class="td-qty">Ernst Handel</td>
+                        <td class="td-del"><a href="#">Remove</a></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">Total produse in baza de date : 0</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div id="admin-add-product">
+                <form>
+                    <div class="form-group row">
+                        <label for="linkImagine" class="col-sm-2 col-form-label">Imagine</label>
+                        <div class="col-sm-10">
+                        <input type="email" class="form-control" id="linkImagine" placeholder="Introduceti link-ul imaginii produsului">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="numeProdus" class="col-sm-2 col-form-label">Nume</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="numeProdus" placeholder="Introduceti numele produsului">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Descriere</label>
+                        <div class="col-sm-10">
+                            <textarea name="" id="" item-width="100%" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="pretProdus" class="col-sm-2 col-form-label">Pret</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="pretProdus" placeholder="Introduceti pretul produsului nou">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cantitateProdus" class="col-sm-2 col-form-label">Cantitate</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="cantitateProdus" placeholder="Selectati cantitatea disponibila in stoc ...">
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </section>
+
+    <!-- Footer Area of The Mag -->
+    <section id="footer-area"></section>
+    <script src="javascript/app.js"></script>
+</body>
+</html>

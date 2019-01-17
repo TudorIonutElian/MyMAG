@@ -1,0 +1,72 @@
+{
+    "produse": {
+        "google_pixel": {
+            "id" : 1,
+            "imagine_produs" : "img/1.jpg",
+            "nume" : "Google Pixel",
+            "pret" : 123,
+            "cantitate" : 236
+        },
+        "detergent": {
+            "id" : 2,
+            "imagine_produs" : "img/2.jpg",
+            "nume" : "Detergent Ariel 3kg",
+            "pret" : 123,
+            "cantitate" : 236
+        },
+        "casti": {
+            "id" : 3,
+            "imagine_produs" : "img/3.jpg",
+            "nume" : "Casti Audio Sony 2m",
+            "pret" : 1233,
+            "cantitate" : 236
+        },
+        "tv_system": {
+            "id" : 4,
+            "imagine_produs" : "img/4.jpg",
+            "nume" : "TV Streamming Device S400",
+            "pret" : 78,
+            "cantitate" : 236
+        },
+        "citrice_pack": {
+            "id" : 4,
+            "imagine_produs" : "img/5.jpg",
+            "nume" : "Pachet Suc Citrice 2 L x 4",
+            "pret" : 718,
+            "cantitate" : 236
+        },
+        "mixaj_audio": {
+            "id" : 4,
+            "imagine_produs" : "img/6.jpg",
+            "nume" : "Sistem Mixaj Audio 400W",
+            "pret" : 718,
+            "cantitate" : 236
+        },
+        "picaturi_ochelari": {
+            "id" : 4,
+            "imagine_produs" : "img/7.jpg",
+            "nume" : "Picaturi Ochelari 30ml",
+            "pret" : 718,
+            "cantitate" : 236
+        },
+        "dino_toy": {
+            "id" : 4,
+            "imagine_produs" : "img/8.jpg",
+            "nume" : "Jucarie Dinozaur 3 ani",
+            "pret" : 718,
+            "cantitate" : 236
+        }
+    },
+    "stock": {
+        "google_pixel": {
+            "id" : 1,
+            "stoc_produs" : 200
+        }
+    },
+    "cos": {
+        "google_pixel": {
+            "id": 1,
+            "cantitate" : 1
+        }
+    }
+}
