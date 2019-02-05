@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+a, 
+a:hover {
+    text-decoration: none;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+#top-area {
+    padding-top: 15px;
+    height: 20%;
+}
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.col-sm-12:nth-of-type(odd),
+.col-md-6:nth-of-type(odd) {
+    align-self: flex-start;
+}
+
+.col-sm-12:nth-of-type(even),
+.col-md-6:nth-of-type(even) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.row h1 {
+    font-family: 'Staatliches', cursive;
+    letter-spacing: 3px;
+}
+
+#top-area .row .btn {
+    margin: 0px 10px;
+}
+
+.btn,
+.btn:hover{
+    background-color: #22a7f0;
+    color: #fff;
+}
+
+#top-area .row{
+    border-bottom: 1px solid #22a7f0;
+}
+
+/* Product Details CSS */
+#products-details {
+    width: 100%;
+    height: 80%;
+    
+}
+#products-details .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.product-image {
+    width: 100px;
+}
+.col-6 img {
+    width: 100%;
+    min-height: 200px;
+}
+.col-6.product-rows {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: space-between;
+    
+}
+.col-6.product-rows div {
+    padding: 3px;
+    margin-bottom: 10px;
+}
+.img-thumbnail{
+    padding: 0;
+    width: 100px;
+}
+.product-rows_title {
+    text-transform: uppercase;
+}
+.col-6.product-rows div.product-rows_desc {
+    font-style: italic;
+    text-align: justify;
+}
+.product-rows_title {
+    font-size: 20px;
+}
+.product-rows_title, 
+.product-rows_price span, 
+.product-rows_stock span, 
+.product-rows_qty span {
+    font-weight: bold;
+}
+.products-details .row .btn {
+    margin: 0; 
+}
+
+a:not([href]):not([tabindex]),
+a:not([href]):not([tabindex]):hover {
+    color: #fff;
+    text-decoration: none;
+}

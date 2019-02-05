@@ -1,72 +1,58 @@
 {
-    "produse": {
-        "google_pixel": {
-            "id" : 1,
-            "imagine_produs" : "img/1.jpg",
-            "nume" : "Google Pixel",
-            "pret" : 123,
-            "cantitate" : 236
-        },
-        "detergent": {
-            "id" : 2,
-            "imagine_produs" : "img/2.jpg",
-            "nume" : "Detergent Ariel 3kg",
-            "pret" : 123,
-            "cantitate" : 236
-        },
-        "casti": {
-            "id" : 3,
-            "imagine_produs" : "img/3.jpg",
-            "nume" : "Casti Audio Sony 2m",
-            "pret" : 1233,
-            "cantitate" : 236
-        },
-        "tv_system": {
-            "id" : 4,
-            "imagine_produs" : "img/4.jpg",
-            "nume" : "TV Streamming Device S400",
-            "pret" : 78,
-            "cantitate" : 236
-        },
-        "citrice_pack": {
-            "id" : 4,
-            "imagine_produs" : "img/5.jpg",
-            "nume" : "Pachet Suc Citrice 2 L x 4",
-            "pret" : 718,
-            "cantitate" : 236
-        },
-        "mixaj_audio": {
-            "id" : 4,
-            "imagine_produs" : "img/6.jpg",
-            "nume" : "Sistem Mixaj Audio 400W",
-            "pret" : 718,
-            "cantitate" : 236
-        },
-        "picaturi_ochelari": {
-            "id" : 4,
-            "imagine_produs" : "img/7.jpg",
-            "nume" : "Picaturi Ochelari 30ml",
-            "pret" : 718,
-            "cantitate" : 236
-        },
-        "dino_toy": {
-            "id" : 4,
-            "imagine_produs" : "img/8.jpg",
-            "nume" : "Jucarie Dinozaur 3 ani",
-            "pret" : 718,
-            "cantitate" : 236
-        }
-    },
-    "stock": {
-        "google_pixel": {
-            "id" : 1,
-            "stoc_produs" : 200
-        }
-    },
-    "cos": {
-        "google_pixel": {
-            "id": 1,
-            "cantitate" : 1
-        }
+  "cos" : {
+    "google_pixel" : {
+      "cantitate" : 1,
+      "id" : "google_pixel"
     }
+  },
+  "magazin" : {
+    "produs_incarcator_usb_4_porturi" : {
+      "id_produs" : "incarcator_usb_4_porturi",
+      "descriere_produs": "",
+      "imagine_produs" : "incarcatorusb",
+      "nume_produs" : "Incarcator USB 4 Porturi",
+      "pret_produs" : 22.33,
+      "stock_produs" : 25
+    },
+    "produs_mouse_optical_2_leds" : {
+      "id_produs" : "mouse_optical_2_leds",
+      "descriere_produs": "",
+      "imagine_produs" : "mouse",
+      "nume_produs" : "Mouse Optical 2 Leds",
+      "pret_produs" : 22.45,
+      "stock_produs" : 234
+    },
+    "produs_robotel_dinozaur" : {
+      "id_produs" : "robotel_dinozaur",
+      "descriere_produs": "",
+      "imagine_produs" : "dinorobot",
+      "nume_produs" : "Robotel Dinozaur",
+      "pret_produs" : 13.99,
+      "stock_produs" : 23
+    },
+    "produs_solutie_curata_ochelari_200ml_2 1" : {
+      "id_produs" : "solutie_curata_ochelari_200ml_2+1",
+      "descriere_produs": "",
+      "imagine_produs" : "solutieochelari",
+      "nume_produs" : "Solutie curata ochelari 200ml 2+1",
+      "pret_produs" : 23.44,
+      "stock_produs" : 23
+    },
+    "produs_system_audio_370_wats" : {
+      "id_produs" : "system_audio_370_wats",
+      "descriere_produs": "",
+      "imagine_produs" : "audiosystem",
+      "nume_produs" : "System Audio 370 Wats",
+      "pret_produs" : 22.44,
+      "stock_produs" : 345
+    },
+    "produs_telefon_mobil_v5" : {
+      "id_produs" : "telefon_mobil_v5",
+      "descriere_produs": "",
+      "imagine_produs" : "telefon",
+      "nume_produs" : "Telefon Mobil V5",
+      "pret_produs" : 98.77,
+      "stock_produs" : 54
+    }
+  }
 }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My MAG - a simple store named simple MAG</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500,700|Staatliches" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:500|Staatliches" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/mag.css">
+</head>
+<body class="container" onload="preluareProduseCos();">
+    <!-- Top Area of The Mag -->
+    <section id="admin-top-area">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h1><a href="../index.html">My MAG</a></h1>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <a class="btn btn-primary" href="../admin/index.html">
+                    <span><i class="fas fa-lock"></i></span>
+                    Admin
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="admin-product-add">
+        <div class="product-add_top">
+            <div class="products-header-info">Produse in cos</div>
+            <div class="products-header-btn">
+                <button id="adminAddBtn" class="btn btn-primary">
+                    <span><i class="fas fa-shopping-cart"></i></span>
+                    Finalizeaza Cumparaturile
+                </button>
+            </div>
+        </div>
+        <div id="admin-products" class="admin-products">
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <th>Imagine</th>
+                        <th>Nume</th>
+                        <th>Pret</th>
+                        <th>Cantitate</th>
+                        <th>Sterge Produs</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody_products">
+                    <tr>
+                        <td class="td-img">
+                            <img src="" alt="">
+                        </td>
+                        <td class="td-name">Roland Mendel</td>
+                        <td class="td-price">Austria</td>
+                        <td class="td-qty"><input type="number" name="" id=""></td>
+                        <td class="td-del"><a href="#">Sterge din cos</a></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5" id="total_produse_cos"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        </div>
+    </section>
+
+    <!-- Footer Area of The Mag -->
+    <section id="footer-area"></section>
+    <script src="cart.js"></script>
+    <script src="../javascript/app.js"></script>
+</body>
+</html>
