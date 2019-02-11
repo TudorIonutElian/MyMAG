@@ -1,132 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My MAG - a simple store named simple MAG</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:500,700|Staatliches" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:500|Staatliches" rel="stylesheet">
-    <link rel="stylesheet" href="mag.css">
-</head>
-<body class="container">
-    <!-- Top Area of The Mag -->
-    <section id="admin-top-area">
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <h1><a href="index.html">My MAG</a></h1>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <a class="btn btn-primary" href="cart.html">
-                    <span><i class="fas fa-cart-plus"></i></span>
-                    Cos Cumparaturi
-                </a>
-                <a class="btn btn-primary" href="admin.html">
-                    <span><i class="fas fa-lock"></i></span>
-                    Admin
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="admin-product-add">
-        <div class="product-add_top">
-            <div class="products-header-info">Gestionare produse</div>
-            <div class="products-header-btn">
-                <button id="adminAddBtn" class="btn btn-primary">
-                    <span><i class="fas fa-plus"></i></span>
-                    Adaugare produs nou
-                </button>
-                <div id="products-header-btn-new">
-                    <button id="saveProduct" class="btn btn-primary">
-                            <span><i class="fas fa-plus"></i></span>
-                            Salveaza
-                    </button>
-                    <button id="cancelProduct" class="btn btn-danger">
-                        <span><i class="fas fa-ban"></i></span>
-                        Cancel
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div id="admin-products" class="admin-products">
-            <table class="products-table">
-                <thead>
-                    <tr>
-                        <th>Imagine</th>
-                        <th>Nume</th>
-                        <th>Pret</th>
-                        <th>Cantitate</th>
-                        <th>Sterge Produs</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="td-img">
-                            <img src="img/1.jpg" alt="">
-                        </td>
-                        <td class="td-name">Roland Mendel</td>
-                        <td class="td-price">Austria</td>
-                        <td class="td-qty">Ernst Handel</td>
-                        <td class="td-del"><a href="#">Remove</a></td>
-                    </tr>
-                    <tr>
-                        <td class="td-img">
-                            <img src="img/1.jpg" alt="">
-                        </td>
-                        <td class="td-name">Roland Mendel</td>
-                        <td class="td-price">Austria</td>
-                        <td class="td-qty">Ernst Handel</td>
-                        <td class="td-del"><a href="#">Remove</a></td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="5">Total produse in baza de date : 0</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-        <div id="admin-add-product">
-                <form>
-                    <div class="form-group row">
-                        <label for="linkImagine" class="col-sm-2 col-form-label">Imagine</label>
-                        <div class="col-sm-10">
-                        <input type="email" class="form-control" id="linkImagine" placeholder="Introduceti link-ul imaginii produsului">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="numeProdus" class="col-sm-2 col-form-label">Nume</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="numeProdus" placeholder="Introduceti numele produsului">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Descriere</label>
-                        <div class="col-sm-10">
-                            <textarea name="" id="" item-width="100%" rows="3"></textarea>
-                        </div>
-                    </div>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	
+		<title>My Mag - Setari Administrative</title>
+	
+		<!-- Google font -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+	
+		<!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	
+		<!-- Font Awesome Icon -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	
+		<!-- Custom stlylesheet -->
+		<link type="text/css" rel="stylesheet" href="css/style.css" />
+	
+	</head>
+	<body onload="loadAdmin();">
+		<!-- HEADER -->
+		<header>
+			<!-- TOP HEADER -->
+			<div id="top-header">
+				<div class="container">
+					<ul class="header-links pull-left">
+						<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+					</ul>
+					<ul class="header-links pull-right">
+						<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
+						<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /TOP HEADER -->
 
-                    <div class="form-group row">
-                        <label for="pretProdus" class="col-sm-2 col-form-label">Pret</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="pretProdus" placeholder="Introduceti pretul produsului nou">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="cantitateProdus" class="col-sm-2 col-form-label">Cantitate</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="cantitateProdus" placeholder="Selectati cantitatea disponibila in stoc ...">
-                        </div>
-                    </div>
-                </form>
-        </div>
-    </section>
+			<!-- MAIN HEADER -->
+			<div id="header">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<!-- LOGO -->
+						<div class="col-md-3">
+							<div class="header-logo">
+								<a href="index.html" class="logo">
+									<img src="./img/logo.png" alt="">
+								</a>
+							</div>
+						</div>
+						<!-- /LOGO -->
 
-    <!-- Footer Area of The Mag -->
-    <section id="footer-area"></section>
-    <script src="javascript/app.js"></script>
-</body>
+						<!-- SEARCH BAR -->
+						<div class="col-md-6">
+							<div class="header-search">
+								<form>
+									<select class="input-select">
+										<option value="0">All Categories</option>
+										<option value="1">Category 01</option>
+										<option value="1">Category 02</option>
+									</select>
+									<input class="input" placeholder="Search here">
+									<button class="search-btn">Search</button>
+								</form>
+							</div>
+						</div>
+						<!-- /SEARCH BAR -->
+
+						<!-- ACCOUNT -->
+						<div class="col-md-3 clearfix">
+							<div class="header-ctn">
+								<!-- Wishlist -->
+								<div>
+									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+										<i class="far fa-heart fa-5x"></i>
+										<span>Your Cart</span>
+										<div class="qty">3</div>
+									</a>
+								</div>
+								<!-- /Wishlist -->
+
+								<!-- Cart -->
+								<div class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+										<i class="fa fa-shopping-cart"></i>
+										<span>Your Cart</span>
+										<div class="qty">3</div>
+									</a>
+									<div class="cart-dropdown">
+										<div class="cart-list">
+											<div class="product-widget">
+												<div class="product-img">
+													<img src="" alt="">
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a href="#">product name goes here</a></h3>
+													<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
+												</div>
+												<button class="delete"><i class="fa fa-close"></i></button>
+											</div>
+
+											<div class="product-widget">
+												<div class="product-img">
+													<img src="" alt="">
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a href="#">product name goes here</a></h3>
+													<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+												</div>
+												<button class="delete"><i class="fa fa-close"></i></button>
+											</div>
+										</div>
+										<div class="cart-summary">
+											<small>3 Item(s) selected</small>
+											<h5>SUBTOTAL: $2940.00</h5>
+										</div>
+										<div class="cart-btns">
+											<a href="#">View Cart</a>
+											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+										</div>
+									</div>
+								</div>
+								<!-- /Cart -->
+
+								<!-- Menu Toogle -->
+								<div class="menu-toggle">
+									<a href="#">
+										<i class="fa fa-bars"></i>
+										<span>Menu</span>
+									</a>
+								</div>
+								<!-- /Menu Toogle -->
+							</div>
+						</div>
+						<!-- /ACCOUNT -->
+					</div>
+					<!-- row -->
+				</div>
+				<!-- container -->
+			</div>
+			<!-- /MAIN HEADER -->
+		</header>
+		<!-- /HEADER -->
+
+		<!-- NAVIGATION -->
+		<nav id="navigation">
+			<!-- container -->
+			<div class="container">
+				<!-- responsive-nav -->
+				<div id="responsive-nav">
+					<!-- NAV -->
+					<ul class="main-nav nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#">Hot Deals</a></li>
+						<li><a href="#">Categories</a></li>
+						<li><a href="#">Laptops</a></li>
+						<li><a href="#">Smartphones</a></li>
+						<li><a href="#">Cameras</a></li>
+						<li><a href="#">Accessories</a></li>
+					</ul>
+					<!-- /NAV -->
+				</div>
+				<!-- /responsive-nav -->
+			</div>
+			<!-- /container -->
+		</nav>
+		<!-- /NAVIGATION -->
+
+
+		<!-- SECTION -->
+		<div class="section" id="sections-admin">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row row-space">
+					<div id="viewProducts" class="col-12 col-md-3 col-box bg-module-dark">
+						<div class="row">
+							<div class="col-12 my-3"><a href="#" onclick="vizualizareProduse();">Vizualizare Produse</a></div>
+							<div class="col-12"><i class="fas fa-tools fa-3x"></i></div>
+						</div>
+					</div>
+					<div id="addProduct" class="col-12 col-md-3 col-xs-6 col-box bg-module-light">
+						<div class="row">
+							<div class="col-12"><a href="#" onclick="adaugaProdus();">Adauga produs</a></div>
+							<div class="col-12"><i class="fas fa-folder-plus fa-3x"></i></div>
+						</div>
+					</div>
+					<div id="meniuManagementAdd" class="col-12 col-md-3 col-xs-6 col-box bg-module-light">
+						<div class="row">
+							<div class="col-12"><a onclick="meniuManagementAdd();" href="#">Adauga LINK</a></div>
+							<div class="col-12"><i class="fas fa-layer-group fa-3x"></i></div>
+						</div>
+					</div>
+					<div id="meniuManagementView" class="col-12 col-md-3 col-xs-6 col-box bg-module-dark">
+						<div class="row">
+							<div class="col-12"><a onclick="meniuManagementView();" href="#">Meniu</a></div>
+							<div class="col-12"><i class="fas fa-bars fa-3x"></i></div>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+		<!-- SECTION Lista produselor-->
+		<div class="section" id="section-lista-produse">
+				<!-- container -->
+				<div class="container">
+					<div class="row">
+						<div class="col-12 text-center">
+							<h3>Lista produselor existente in magazin</h3>
+						</div>
+						<div class="row">
+							<table class="table">
+								<thead class="thead-dark">
+									<tr>
+										<th scope="col">Nume produs</th>
+										<th scope="col">Pret nou</th>
+										<th scope="col">Pret vechi</th>
+										<th scope="col">Promotie</th>
+										<th scope="col">Reducere produs</th>
+										<th scope="col">Stock produs</th>
+										<th scope="col">Sterge</th>
+										<th scope="col">Editeaza</th>
+									</tr>
+								</thead>
+								<tbody id="lista-produse-admin">
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<!-- SECTION Adaugare Pordus -->
+		<div class="section" id="section-adauga-produse">
+				<!-- container -->
+				<div class="container">
+					<div class="row" id="adaugare-produs-nou">
+						<div class="col-12 text-center">
+							<h3>Adaugare produs nou in magazin</h3>
+						</div>
+						<div class="col-12">
+							<form>
+									<div class="form-group row">
+										<label for="productTitle" class="col-sm-2 col-form-label">Nume produs</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" id="productTitle" placeholder="Titlul produsului">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="productCategory" class="col-sm-2 col-form-label">Categorie produs</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" id="productCategory" placeholder="Categoria produsului">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="productDescription" class="col-sm-2 col-form-label">Descriere produs</label>
+										<div class="col-sm-10">
+											<textarea id="productDescription" placeholder="Descriere produs"></textarea>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="productImage" class="col-sm-2 col-form-label">Imagine produs</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" id="productImage" placeholder="Imaginea produsului">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="productPretNou" class="col-sm-2 col-form-label">Pret nou produs</label>
+										<div class="col-sm-10">
+											<input type="number" class="form-control" id="productPretNou">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="productPretVechi" class="col-sm-2 col-form-label">Pret vechi produs</label>
+										<div class="col-sm-10">
+											<input type="number" class="form-control" id="productPretVechi">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="productPromotie" class="col-sm-2 col-form-label">Promotie produs</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" id="productPromotie" placeholder="Promotie DA sau NU">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="productReducere" class="col-sm-2 col-form-label">Reducere?</label>
+										<div class="col-sm-10">
+											<input type="number" class="form-control" id="productReducere" min="0" max="100">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="productStock" class="col-sm-2 col-form-label">Cantitate in stock</label>
+										<div class="col-sm-10">
+											<input type="number" class="form-control" id="productStock" min="0">
+										</div>
+									</div>
+								</form>							
+						</div>
+						<div class="col-6">
+							<a href="#" class="reset-produs">Reseteaza campuri</a>
+							<a onclick="adaugareProdus();" href="#" class="adaugare-produs">Adaugare Produs</a>
+						</div>
+					</div>
+				</div>
+				<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<!-- SECTION Meniu Management -->
+		<div class="section" id="section-meniu-management">
+				<!-- container -->
+				<div class="container">
+					<div class="row" id="adaugare-produs-nou">
+						<div class="col-12 text-center">
+							<h3>Management Meniu</h3>
+						</div>
+						<div class="col-12">
+							<form>
+									<div class="form-group row">
+										<label for="linkID" class="col-sm-2 col-form-label">ID Link</label>
+										<div class="col-sm-10">
+											<input type="number" class="form-control" id="linkID" disabled>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="hrefLink" class="col-sm-2 col-form-label">HREF Link</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" id="hrefLink">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="textLink" class="col-sm-2 col-form-label">TEXT Link</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" id="textLink">
+										</div>
+									</div>
+								</form>							
+						</div>
+						<div class="col-6">
+							<a href="#" class="reset-produs">Reseteaza campuri</a>
+							<a href="#" class="adaugare-produs">Adaugare LINK</a>
+						</div>
+					</div>
+				</div>
+				<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<!-- NEWSLETTER -->
+		<div id="newsletter" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="newsletter">
+							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<form>
+								<input class="input" type="email" placeholder="Enter Your Email">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+							</form>
+							<ul class="newsletter-follow">
+								<li>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-pinterest"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /NEWSLETTER -->
+
+		<!-- FOOTER -->
+		<footer id="footer">
+			<!-- top footer -->
+			<div class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">About Us</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+								<ul class="footer-links">
+									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Categories</h3>
+								<ul class="footer-links">
+									<li><a href="#">Hot deals</a></li>
+									<li><a href="#">Laptops</a></li>
+									<li><a href="#">Smartphones</a></li>
+									<li><a href="#">Cameras</a></li>
+									<li><a href="#">Accessories</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="clearfix visible-xs"></div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Information</h3>
+								<ul class="footer-links">
+									<li><a href="#">About Us</a></li>
+									<li><a href="#">Contact Us</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="#">Orders and Returns</a></li>
+									<li><a href="#">Terms & Conditions</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Service</h3>
+								<ul class="footer-links">
+									<li><a href="#">My Account</a></li>
+									<li><a href="#">View Cart</a></li>
+									<li><a href="#">Wishlist</a></li>
+									<li><a href="#">Track My Order</a></li>
+									<li><a href="#">Help</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /top footer -->
+
+			<!-- bottom footer -->
+			<div id="bottom-footer" class="section">
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<ul class="footer-payments">
+								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+								<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+							</ul>
+							<span class="copyright">
+								
+							</span>
+
+
+						</div>
+					</div>
+						<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /bottom footer -->
+		</footer>
+		<!-- /FOOTER -->
+
+		<!-- jQuery Plugins -->
+		<script src="js/app.js"></script>
+
+	</body>
 </html>
