@@ -32,6 +32,7 @@ async function getMenu(){
     links_menu.innerHTML = target_links;
 }
 async function getProduse(){
+    var URLlocation = location.href;
     var lista_produse_target = document.getElementById('lista_produse');
     var produse = JSON.parse(await ajax("GET", `https://mymag-31b68.firebaseio.com/produse/.json`));
     var lista_produse_final = "";
@@ -48,7 +49,6 @@ async function getProduse(){
                         </div>
                     </div>
                     <div class="product-body">
-                        <p class="product-category">${produse[produs].categorie_produs}</p>
                         <h3 class="product-name"><a href="#">${produse[produs].nume_produs}</a></h3>
                         <h4 class="product-price">${produse[produs].pret_nou_produs} RON <del class="product-old-price">$ ${produse[produs].pret_vechi_produs} RON</del></h4>
                         <div class="product-btns">
@@ -65,8 +65,7 @@ async function getProduse(){
 
         `;
     }
-    lista_produse_target.innerHTML += lista_produse_final;
-    await getProduseCos();
+    lista_produse_target.innerHTML = lista_produse_final;
 }
 
 function verificaReducere(product){
@@ -85,6 +84,7 @@ function verificaProdusNou(product){
 }
 function loadAdmin(){
     getProduseAdmin();
+    getMenu();
 }
 async function getProduseAdmin(){
     var produse = JSON.parse(await ajax("GET", `https://mymag-31b68.firebaseio.com/produse/.json`));
@@ -103,7 +103,7 @@ async function getProduseAdmin(){
             ${verificaReducereAdmin(produse[produs])}
             <td>${produse[produs].stock_produs}</td>
             <td><a class="admin-btn-delete" href="stergeprodus.html?id=${produse[produs].id_produs}">Sterge</a></td>
-            <td><a class="admin-btn-edit" href="editeazaprodus.html?id=${produse[produs].id_produs}">Editeaza</a></td>
+            <td><a class="admin-btn-edit" href=""editprodus.html?id=${produse[produs].id_produs}">Editeaza</a></td>
         </tr>
         `;
     }
@@ -154,36 +154,7 @@ function meniuManagementView(){
     })
 }
 async function adaugaProdusCos(produs){
-    var produs_nou_cos = {
-        "id_produs": `${produs}`,
-        "cantitate": 1
-    }
-    var getProduseCos = JSON.parse(await ajax("GET", `https://mymag-31b68.firebaseio.com/cos.json`));
-    //Verificare produs in baza de date
-    var qtyProd = JSON.parse(await ajax("GET", `https://mymag-31b68.firebaseio.com/produse/${produs}/stock_produs.json`));
-    if( getProduseCos.hasOwnProperty(produs) ) {
-        //Produs identificat in baza de date
-        var cantitate_cos = JSON.parse(await ajax("GET", `https://mymag-31b68.firebaseio.com/cos/${produs}.json`));
-        //Preluare cantitate existenta in cos
-        var cantitate_in_cos = cantitate_cos.cantitate;
-        if(cantitate_in_cos < qtyProd){
-            cantitate_in_cos++;
-            produs_nou_cos.cantitate = cantitate_in_cos;
-            await ajax("PUT", `https://mymag-31b68.firebaseio.com/cos/${produs}/cantitate.json`, JSON.stringify(produs_nou_cos.cantitate));
-        }else if(cantitate_in_cos = qtyProd){
-            alert(`Nu puteti adauga mai mult produse, Numarul maxim pe care il puteti cumpara este ${qtyProd}`);
-        }
-
-    }else{
-        if(produs_nou_cos.cantitate > qtyProd){
-            alert('Nu exista atatea produse in stock!');
-        }else if(produs_nou_cos.cantitate <= qtyProd){
-            await ajax("PUT", `https://mymag-31b68.firebaseio.com/cos/${produs}.json`, JSON.stringify(produs_nou_cos));
-            setTimeout(function(){
-                location.reload();
-            }, 20);
-        }
-    }
+    verificareProdusCos(produs);
 }
 async function getProduseCos(){
     var produse_in_cos = JSON.parse(await ajax("GET", `https://mymag-31b68.firebaseio.com/cos/.json`));
@@ -256,9 +227,7 @@ async function getProductDetails(){
                         <div class="qty-label">
                             Qty
                             <div class="input-number">
-                                <input type="number">
-                                <span class="qty-up">+</span>
-                                <span class="qty-down">-</span>
+                                <input type="number" min="1">
                             </div>
                         </div>
                         <button onclick="adaugaProdusCos('${response.id_produs}');"class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Adauga in cos</button>
@@ -317,4 +286,69 @@ async function adaugareProdus(){
         await ajax("PUT", `https://mymag-31b68.firebaseio.com/produse/${creare_produs_nou.id_produs}.json`, finalProduct);
     }
 
+}
+
+async function stergeProdus(){
+    var url = location.search.substring(4);
+    var confirmationOutput = document.getElementById('confirmareStergere');
+    //Preluare nume produs de sters
+    var produsDeSters = JSON.parse(await ajax("GET", `https://mymag-31b68.firebaseio.com/produse/${url}.json`));
+    var produsDeStersNume = produsDeSters.nume_produs;
+    var asking = 
+    `
+        <div class="col-12 col-md-2 text-center" >
+            <img class="img-delete" src="${produsDeSters.imagine_produs}">
+        </div>
+        <div class="col-12 col-md-10 text-center">
+            Sunteti sigur ca doriti sa stergeti produsul <b>${produsDeStersNume}</b> din baza de date?
+            <div class="row dispay-flex">
+                    <a href="" class="admin-btn-edit btn">Da, stergeti produsul</a>
+                    <a id="cancelDeleteButton" href="" class="admin-btn-delete btn">Nu, anuleaza stergerea</a>
+            </div>
+        </div>
+    `;
+    confirmationOutput.innerHTML = asking;
+    var cancelDeleteButton = document.getElementById('cancelDeleteButton');
+    cancelDeleteButton.addEventListener("click", function(event){
+        event.preventDefault();
+        location.replace("index.html");
+    });
+}
+async function verificareProdusCos(produs){
+    var cos, stock, emptyStock, cantitate, produsDB;
+    //Setare cantitate standard pentru adaugare in cos
+    cantitate = 1;
+    //Preluare produse din cos
+    cos      = JSON.parse(await ajax("GET", `https://mymag-31b68.firebaseio.com/cos.json`));
+    //Preluare cantitate produs din cos
+    stock    = JSON.parse(await ajax("GET", `https://mymag-31b68.firebaseio.com/produse/${produs}/stock_produs.json`));
+    produs = JSON.parse(await ajax("GET", `https://mymag-31b68.firebaseio.com/produse/${produs}/.json`));
+    //Creare obiect nou care sa aiba valorile produslui
+    var produsNou = {
+        "id": produs,
+        "cantitate": cantitate
+    }
+    if(cos.hasOwnProperty(produs)){
+        //Verificare cantitate stock
+        if(stock != 0){
+            //Preluare detalii produs din cos
+                produsExistent = JSON.parse(await ajax("GET", `https://mymag-31b68.firebaseio.com/cos/${produs}/.json`));
+            //Setare produs nou de adaugat in cos cu aceleasi valori
+                produsNou.id = produsExistent.id;
+                produsNou.cantitate = produsExistent.cantitate;
+            //Incrementare valoare noua a produsului din cos
+                produsNou.cantitate++;
+            //Ajax care reintroduce produsul cu noua valoare
+                await ajax("PUT", `https://mymag-31b68.firebaseio.com/cos/${produs}/.json`, JSON.stringify(produsNou));
+            //Decrementare cantitate din stock
+            stock -= 1;
+            //Introducere valoare noua in stock-ul produsului
+            await ajax("PUT", `https://mymag-31b68.firebaseio.com/produse/${produs}/stock_produs.json`, JSON.stringify(stock));
+        }else{
+            alert(`Stock epuizat pentru produsul ${produsDB.nume_produs}, var rugam sa reveniti!`);
+        }
+    }else{
+        //Adaugare produs in cos
+        await ajax("PUT", `https://mymag-31b68.firebaseio.com/cos/${produs}/.json`, JSON.stringify(produsNou));
+    }
 }

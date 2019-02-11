@@ -2258,3 +2258,18 @@ textarea.input {
 #section-adauga-produse{
   display: none;
 }
+.dispay-flex {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
+}
+.dispay-flex a.btn{
+  display: inline-block;
+  margin: 0 10px;
+  padding: 10px;
+}
+.img-delete{
+  width: 100%;
+}
