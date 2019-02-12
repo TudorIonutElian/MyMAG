@@ -387,6 +387,7 @@ async function adaugareProdus(){
         confirmDeleteButton.addEventListener("click", async function(event){
             event.preventDefault();
             await ajax("DELETE", `https://mymag-31b68.firebaseio.com/produse/${url}.json`, url);
+            await ajax("DELETE", `https://mymag-31b68.firebaseio.com/cos/${url}.json`, url);
             location.replace("index.html");
         });
     }
